@@ -21,7 +21,6 @@ public class ExampleUnitTest {
     @Test
     public void doSubtract() throws Exception {
         assertEquals(1, 3 - 2 );
-        ;
     }
 
 @Test

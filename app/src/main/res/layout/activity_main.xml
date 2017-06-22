@@ -29,7 +29,9 @@
         android:text="Start"
         tools:layout_editor_absoluteY="305dp"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:layout_marginRight="0dp" />
 
     <Button
         android:id="@+id/button2"
@@ -38,6 +40,8 @@
         android:text="Options"
         tools:layout_editor_absoluteY="394dp"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:layout_marginRight="0dp" />
 
 </android.support.constraint.ConstraintLayout>

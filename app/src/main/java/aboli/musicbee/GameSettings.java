@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class GameSettings extends AppCompatActivity {
     public Integer timer;
@@ -17,23 +18,27 @@ public class GameSettings extends AppCompatActivity {
         intent = new Intent(this, Instruction_Page.class);
     }
 
-    public void easyPress() {
+    protected void easyPress() {
         difficulty = "Easy";
+        TextView t = (TextView) findViewById(R.id.displayDiff);
+        t.setText(difficulty);
     }
 
-    public void hardPress() {
+    protected void hardPress() {
         difficulty = "Hard";
+        TextView t = (TextView) findViewById(R.id.displayDiff);
+        t.setText(difficulty);
     }
 
-    public void press30() {
+    protected void press30() {
         timer = 30;
     }
 
-    public void press45() {
+    protected void press45() {
         timer = 45;
     }
 
-    public void press60() {
+    protected void press60() {
         timer = 60;
     }
 

@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ *
+ */
 public class GameSettings extends AppCompatActivity {
     public Integer timer;
     public Intent intent;

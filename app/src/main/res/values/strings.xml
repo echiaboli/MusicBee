@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">MusicBee</string>
     <string name="title_activity_game_settings">GameSettings</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="button30">30 Seconds</string>
+    <string name="button45">45 Seconds</string>
+    <string name="button60">60 Seconds</string>
+    <string name="submit">Submit</string>
+    <string name="easy">Easy</string>
+    <string name="hard">Hard</string>
 </resources>

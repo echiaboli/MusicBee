@@ -18,6 +18,8 @@ package="aboli.musicbee">
         </intent-filter>
     </activity>
     <activity android:name="aboli.musicbee.GameSettings" />
+    <activity android:name="aboli.musicbee.Instruction_Page" />
+    <activity android:name="aboli.musicbee.easyGame" />
 </application>
 
 </manifest>

@@ -179,20 +179,6 @@ tools:context="aboli.musicbee.MainActivity">
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="32dp" />
 
-    <EditText
-        android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="time"
-        android:text="60"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/clear"
         android:layout_width="88dp"
@@ -214,5 +200,25 @@ tools:context="aboli.musicbee.MainActivity">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/clear" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:style="@style/?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="60"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="24dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

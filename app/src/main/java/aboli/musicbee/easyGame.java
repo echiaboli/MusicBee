@@ -14,8 +14,7 @@ public class easyGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_easy_game);
         intent = getIntent();
-        Bundle extras = intent.getExtras();
-        timer = extras.getInt("EXTRA_TIMER");
-        showKeys = extras.getBoolean("HAS_LETTERS");
+        timer = intent.getIntExtra(GameSettings.EXTRA_TIMER, 60);
+        showKeys = intent.getBooleanExtra(GameSettings.EXTRA_LETTERS, true);
     }
 }

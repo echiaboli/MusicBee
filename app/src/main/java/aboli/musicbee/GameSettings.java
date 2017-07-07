@@ -19,6 +19,9 @@ public class GameSettings extends AppCompatActivity {
 
     private Integer timer;
     private String difficulty;
+    public static final String EXTRA_TIMER = "EXTRA_TIMER_SAVE";
+    public static final String EXTRA_LETTERS = "EXTRA_LETTERS_SAVE";
+    public static final String EXTRA_DIFFICULTY = "EXTRA_DIFFICULTY_SAVE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +73,11 @@ public class GameSettings extends AppCompatActivity {
             Log.d("GameSettings", "!!! Entered is not checked letters, isChecked instructions");
             Intent intent = new Intent(getApplicationContext(), Instruction_Page.class);
             Bundle extras = new Bundle();
-            intent.putExtra("EXTRA_TIMER", timer);
+            intent.putExtra(EXTRA_TIMER, timer);
             intent.putExtra("EXTRA_DIFFICULTY", difficulty);
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
-            intent.putBoolean("HAS_LETTERS", false);
+            intent.putExtra(EXTRA_LETTERS, false);
             //intent.putExtras(extras);
             startActivity(intent);
         }
@@ -97,13 +100,11 @@ public class GameSettings extends AppCompatActivity {
             String display = "GameSettings";
             Log.w(display, "!!! Entered catchall else statement in GameSettings.Java");
             Intent intent = new Intent(getApplicationContext(), Instruction_Page.class);
-            Bundle extras = new Bundle();
-            extras.putInt("EXTRA_TIMER", timer);
-            extras.putString("EXTRA_DIFFICULTY", difficulty);
+            intent.putExtra(EXTRA_TIMER, timer);
+            intent.putExtra(EXTRA_DIFFICULTY, difficulty);
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
-            extras.putBoolean("HAS_LETTERS", false);
-            intent.putExtras(extras);
+            intent.putExtra(EXTRA_LETTERS, false);
             startActivity(intent);
         }
     }

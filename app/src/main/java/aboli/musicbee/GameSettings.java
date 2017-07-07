@@ -72,9 +72,8 @@ public class GameSettings extends AppCompatActivity {
         if (!letters.isChecked() && instructions.isChecked()) {
             Log.d("GameSettings", "!!! Entered is not checked letters, isChecked instructions");
             Intent intent = new Intent(getApplicationContext(), Instruction_Page.class);
-            Bundle extras = new Bundle();
             intent.putExtra(EXTRA_TIMER, timer);
-            intent.putExtra("EXTRA_DIFFICULTY", difficulty);
+            intent.putExtra(EXTRA_DIFFICULTY, difficulty);
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
             intent.putExtra(EXTRA_LETTERS, false);
@@ -89,10 +88,28 @@ public class GameSettings extends AppCompatActivity {
             }
             else if (difficulty == "Easy") {
                 Intent intent = new Intent(getApplicationContext(), easyGame.class);
-                Bundle extras = new Bundle();
-                extras.putInt("EXTRA_TIMER", timer);
-                extras.putBoolean("HAS_LETTERS", false);
-                intent.putExtra("EXTRA_INFO", extras);
+                intent.putExtra(EXTRA_TIMER, timer);
+                intent.putExtra(EXTRA_LETTERS, false);
+                startActivity(intent);
+            }
+        }
+        else if (letters.isChecked() && instructions.isChecked()) {
+            Log.d("GameSettings", "!!! Entered is checked letters, is checked instructions");
+            Intent intent = new Intent(getApplicationContext(), Instruction_Page.class);
+            intent.putExtra(EXTRA_TIMER, timer);
+            intent.putExtra(EXTRA_DIFFICULTY, difficulty);
+            intent.putExtra(EXTRA_LETTERS, true);
+            startActivity(intent);
+        }
+        else if (letters.isChecked() && !instructions.isChecked()) {
+            Log.d("GameSettings", "!!! Entered is checked letters, is not checked instructions");
+            if (difficulty == "Hard") {
+                //Intent intent = new Intent(getApplicationContext(), HardGame.class);
+            }
+            else if (difficulty == "Easy") {
+                Intent intent = new Intent(getApplicationContext(), easyGame.class);
+                intent.putExtra(EXTRA_TIMER, timer);
+                intent.putExtra(EXTRA_LETTERS, false);
                 startActivity(intent);
             }
         }

@@ -1,22 +1,18 @@
 package aboli.musicbee;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
-import android.content.Intent;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class Instruction_Page extends AppCompatActivity {
 
-    public void getBundle() {
-        Intent intent = new Intent(this, GameSettings.class);
-        Bundle extras = new Bundle();
-        extras.putString("EXTRA_USERNAME","my_username");
-
+    //temporary function to override screen and start easy activity for testing
+    protected void clickButton(View view) {
+        Intent intent = new Intent(getApplicationContext(), easyGame.class);
+        startActivity(intent);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +30,9 @@ public class Instruction_Page extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
 
-        }
-        else if (difficulty == "Intermediate") {
+        } else if (difficulty == "Intermediate") {
 
-        }
-        else if (difficulty == "Hard") {
+        } else if (difficulty == "Hard") {
             Context context = getApplicationContext();
             CharSequence text = "The staff will appear with notes on it. Try and guess the word above with the letters below. After you enter the letters hit submit. If the answers is correct" +
                     " you will gain 5 seconds. If you guess wrong it's minus 5 seconds! Try to get as many correct before the time runs out!";

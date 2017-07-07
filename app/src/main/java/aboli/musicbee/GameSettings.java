@@ -70,12 +70,12 @@ public class GameSettings extends AppCompatActivity {
             Log.d("GameSettings", "!!! Entered is not checked letters, isChecked instructions");
             Intent intent = new Intent(getApplicationContext(), Instruction_Page.class);
             Bundle extras = new Bundle();
-            extras.putInt("EXTRA_TIMER", timer);
-            extras.putString("EXTRA_DIFFICULTY", difficulty);
+            intent.putExtra("EXTRA_TIMER", timer);
+            intent.putExtra("EXTRA_DIFFICULTY", difficulty);
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
-            extras.putBoolean("HAS_LETTERS", false);
-            intent.putExtras(extras);
+            intent.putBoolean("HAS_LETTERS", false);
+            //intent.putExtras(extras);
             startActivity(intent);
         }
         // if the user doesn't want letters and wants to skip instructions move to easy/hard

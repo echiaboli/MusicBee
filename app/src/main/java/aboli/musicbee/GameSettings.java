@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Activity that shows a user what settings the game can run with and allows them to select the ones
@@ -19,6 +20,7 @@ public class GameSettings extends AppCompatActivity {
 
     private Integer timer;
     private String difficulty;
+    private Boolean lettersBool;
     public static final String EXTRA_TIMER = "EXTRA_TIMER_SAVE";
     public static final String EXTRA_LETTERS = "EXTRA_LETTERS_SAVE";
     public static final String EXTRA_DIFFICULTY = "EXTRA_DIFFICULTY_SAVE";
@@ -76,42 +78,67 @@ public class GameSettings extends AppCompatActivity {
             intent.putExtra(EXTRA_DIFFICULTY, difficulty);
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
-            intent.putExtra(EXTRA_LETTERS, false);
+            lettersBool = letters.isChecked();
+            assert (lettersBool == false);
+            intent.putExtra(EXTRA_LETTERS, lettersBool);
             //intent.putExtras(extras);
             startActivity(intent);
         }
         // if the user doesn't want letters and wants to skip instructions move to easy/hard
         else if (!letters.isChecked() && !instructions.isChecked()) {
             Log.d("GameSettings", "!!! Entered is not checked letters, is not checked instructions");
+            Intent intent;
             if (difficulty == "Hard") {
-                //Intent intent = new Intent(getApplicationContext(), HardGame.class);
+                intent = new Intent(getApplicationContext(), hardGame.class);
             }
             else if (difficulty == "Easy") {
-                Intent intent = new Intent(getApplicationContext(), easyGame.class);
-                intent.putExtra(EXTRA_TIMER, timer);
-                intent.putExtra(EXTRA_LETTERS, false);
-                startActivity(intent);
+                intent = new Intent(getApplicationContext(), easyGame.class);
             }
+            else
+            {
+                Log.e("GameSettings", "!!! Intent was not initalized");
+                //something's wrong, restart the activity
+                intent = new Intent(getApplicationContext(), GameSettings.class);
+                Toast errToast = Toast.makeText(getApplicationContext(), "Error changing screens, try again", Toast.LENGTH_LONG);
+                errToast.show();
+            }
+            intent.putExtra(EXTRA_TIMER, timer);
+            lettersBool = letters.isChecked();
+            assert (lettersBool == false);
+            intent.putExtra(EXTRA_LETTERS, lettersBool);
+            startActivity(intent);
         }
         else if (letters.isChecked() && instructions.isChecked()) {
             Log.d("GameSettings", "!!! Entered is checked letters, is checked instructions");
             Intent intent = new Intent(getApplicationContext(), Instruction_Page.class);
             intent.putExtra(EXTRA_TIMER, timer);
             intent.putExtra(EXTRA_DIFFICULTY, difficulty);
-            intent.putExtra(EXTRA_LETTERS, true);
+            lettersBool = letters.isChecked();
+            intent.putExtra(EXTRA_LETTERS, lettersBool);
             startActivity(intent);
         }
         else if (letters.isChecked() && !instructions.isChecked()) {
             Log.d("GameSettings", "!!! Entered is checked letters, is not checked instructions");
+            Intent intent;
             if (difficulty == "Hard") {
-                //Intent intent = new Intent(getApplicationContext(), HardGame.class);
+                intent = new Intent(getApplicationContext(), hardGame.class);
             }
             else if (difficulty == "Easy") {
-                Intent intent = new Intent(getApplicationContext(), easyGame.class);
-                intent.putExtra(EXTRA_TIMER, timer);
-                intent.putExtra(EXTRA_LETTERS, false);
-                startActivity(intent);
+                intent = new Intent(getApplicationContext(), easyGame.class);
             }
+            else
+            {
+                Log.e("GameSettings", "!!! Intent was not initalized");
+                //something's wrong, restart the activity
+                intent = new Intent(getApplicationContext(), GameSettings.class);
+                Toast errToast = Toast.makeText(getApplicationContext(), "Error changing screens, try again", Toast.LENGTH_LONG);
+                errToast.show();
+            }
+            intent.putExtra(EXTRA_TIMER, timer);
+            lettersBool = letters.isChecked();
+            assert (lettersBool == true);
+            intent.putExtra(EXTRA_LETTERS, lettersBool);
+            startActivity(intent);
         }
         else {
             String display = "GameSettings";
@@ -121,7 +148,9 @@ public class GameSettings extends AppCompatActivity {
             intent.putExtra(EXTRA_DIFFICULTY, difficulty);
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
-            intent.putExtra(EXTRA_LETTERS, false);
+            lettersBool = letters.isChecked();
+            assert (lettersBool == false);
+            intent.putExtra(EXTRA_LETTERS, lettersBool);
             startActivity(intent);
         }
     }

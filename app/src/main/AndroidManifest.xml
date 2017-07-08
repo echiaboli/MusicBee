@@ -17,8 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameSettings" />
-        <activity android:name=".Instruction_Page"></activity>
-        <activity android:name=".easyGame"/>
+        <activity android:name=".Instruction_Page" />
+        <activity android:name=".easyGame" />
+        <activity android:name=".hardGame"></activity>
     </application>
 
 </manifest>

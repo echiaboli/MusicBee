@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class Instruction_Page extends AppCompatActivity {
+    private String difficulty;
     private Intent intent;
     //temporary function to override screen and start easy activity for testing
     protected void clickButton() {
@@ -16,10 +17,13 @@ public class Instruction_Page extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instruction__page);
+        setContentView(R.layout.activity_easy_game);
+        intent = getIntent();
+        difficulty = "Easy";
+
+        IntroMessage(difficulty);
+
     }
-    String intro;
     public void IntroMessage(String difficulty) {
         if (difficulty == "Easy") {
             Context context = getApplicationContext();
@@ -30,9 +34,9 @@ public class Instruction_Page extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
 
-        } else if (difficulty == "Intermediate") {
+        } else if(difficulty == "Intermediate") {
 
-        } else if (difficulty == "Hard") {
+        } else if(difficulty == "Hard") {
             Context context = getApplicationContext();
             CharSequence text = "The staff will appear with notes on it. Try and guess the word above with the letters below. After you enter the letters hit submit. If the answers is correct" +
                     " you will gain 5 seconds. If you guess wrong it's minus 5 seconds! Try to get as many correct before the time runs out!";

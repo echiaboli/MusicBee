@@ -12,103 +12,110 @@
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginStart="1dp"
         android:background="@android:color/background_light"
+        android:onClick="clickC"
         android:text="C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/D"
-        android:layout_marginRight="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp" />
+        app:layout_constraintRight_toLeftOf="@+id/D" />
 
     <Button
         android:id="@+id/D"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
+        android:layout_marginStart="1dp"
         android:background="@android:color/background_light"
+        android:onClick="onClickD"
         android:text="D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/C"
-        app:layout_constraintRight_toLeftOf="@+id/E"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp" />
+        app:layout_constraintRight_toLeftOf="@+id/E" />
 
     <Button
         android:id="@+id/E"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginBottom="1dp"
-        android:background="@android:color/background_light"
-        android:text="E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/D"
-        app:layout_constraintRight_toLeftOf="@+id/F"
+        android:layout_marginEnd="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp" />
+        android:background="@android:color/background_light"
+        android:onClick="onClickE"
+        android:text="E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/D"
+        app:layout_constraintRight_toLeftOf="@+id/F" />
 
     <Button
         android:id="@+id/F"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginBottom="1dp"
-        android:background="@android:color/background_light"
-        android:text="F"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/E"
-        app:layout_constraintRight_toLeftOf="@+id/G"
+        android:layout_marginEnd="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp" />
+        android:background="@android:color/background_light"
+        android:onClick="onClickF"
+        android:text="F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/E"
+        app:layout_constraintRight_toLeftOf="@+id/G" />
 
     <Button
         android:id="@+id/G"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
+        android:layout_marginStart="1dp"
         android:background="@android:color/background_light"
+        android:onClick="onClickG"
         android:text="G"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/F"
-        app:layout_constraintRight_toLeftOf="@+id/A"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp" />
+        app:layout_constraintRight_toLeftOf="@+id/A" />
 
     <Button
         android:id="@+id/A"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
+        android:layout_marginStart="1dp"
         android:background="@android:color/background_light"
+        android:onClick="onClickA"
         android:text="A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/G"
-        app:layout_constraintRight_toLeftOf="@+id/B"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp" />
+        app:layout_constraintRight_toLeftOf="@+id/B" />
 
     <Button
         android:id="@+id/B"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginBottom="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginStart="1dp"
         android:background="@android:color/background_light"
+        android:onClick="onClickB"
         android:text="B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/A"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="1dp"
-        android:layout_marginStart="1dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/CsDf"
@@ -184,26 +191,30 @@
         android:id="@+id/clear"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="16dp"
+        android:onClick="clickClear"
         android:text="clear"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="175dp" />
+        app:layout_constraintBottom_toTopOf="@+id/AsBf"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/word"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="238dp"
+        android:layout_width="320dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="237dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="BGF"
+        android:layout_marginTop="8dp"
+        android:background="@color/backgroundBlueDull"
+        android:text=" "
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/clear" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.788" />
 
     <TextView
         android:id="@+id/timerText"

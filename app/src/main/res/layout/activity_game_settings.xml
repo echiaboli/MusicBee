@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="@string/button30"
+        android:text="@string/button60"
         android:textSize="40sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.333"

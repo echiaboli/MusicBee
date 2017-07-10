@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class Instruction_Page extends AppCompatActivity {
     private String difficulty;
     private Intent intent;
+    private TextView t;
     //temporary function to override screen and start easy activity for testing
     protected void clickButton() {
         intent = new Intent(getApplicationContext(), easyGame.class);
@@ -18,29 +21,30 @@ public class Instruction_Page extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_easy_game);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_instruction__page);
         intent = getIntent();
         difficulty = "Easy";
-
-        IntroMessage(difficulty);
-
-    }
-    public void IntroMessage(String difficulty) {
+        t = (TextView) findViewById(R.id.thingHere);
         if (difficulty == "Easy") {
-            Context context = getApplicationContext();
-            TextView t = (TextView) findViewById(R.id.displayDiff);
+
             t.setText("Try and press the correct keys on the keyboard according to the words displayed above! After you enter the notes hit submit. If the answers is correct" +
                     " you will gain 5 seconds. If you guess wrong it's minus 5 seconds! Try to get as many correct before the time runs out!");
-
         } else if(difficulty == "Intermediate") {
 
         } else if(difficulty == "Hard") {
-            Context context = getApplicationContext();
-            TextView t = (TextView) findViewById(R.id.displayDiff);
+            t = (TextView) findViewById(R.id.displayDiff);
             t.setText("The staff will appear with notes on it. Try and guess the word above with the letters below. After you enter the letters hit submit. If the answers is correct" +
                     " you will gain 5 seconds. If you guess wrong it's minus 5 seconds! Try to get as many correct before the time runs out!");
 
         }
+        //IntroMessage();
+
     }
+    /**
+    public void IntroMessage() {
+
+    }
+     */
 
 }

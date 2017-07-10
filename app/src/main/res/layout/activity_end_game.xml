@@ -30,7 +30,7 @@
         android:layout_marginBottom="116dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:onClick="restart"
+        android:onClick="restartGame"
         android:text="Try Again"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

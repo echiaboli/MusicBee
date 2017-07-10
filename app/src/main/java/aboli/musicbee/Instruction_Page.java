@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.Toast;
 
 public class Instruction_Page extends AppCompatActivity {
-
+    private Intent intent;
     //temporary function to override screen and start easy activity for testing
-    protected void clickButton(View view) {
-        Intent intent = new Intent(getApplicationContext(), easyGame.class);
+    protected void clickButton() {
+        intent = new Intent(getApplicationContext(), easyGame.class);
         startActivity(intent);
     }
     @Override

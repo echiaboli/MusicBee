@@ -20,16 +20,17 @@ public class GameSettings extends AppCompatActivity {
 
     private Integer timer;
     private String difficulty;
-    private Boolean lettersBool;
     public static final String EXTRA_TIMER = "EXTRA_TIMER_SAVE";
     public static final String EXTRA_LETTERS = "EXTRA_LETTERS_SAVE";
     public static final String EXTRA_DIFFICULTY = "EXTRA_DIFFICULTY_SAVE";
+    private TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_settings);
-        timer = 30;
+        //default values for the abse game
+        timer = 60;
         difficulty = "Easy";
     }
 
@@ -39,37 +40,41 @@ public class GameSettings extends AppCompatActivity {
      */
     protected void easyPress(View view) {
         difficulty = "Easy";
-        TextView t = (TextView) findViewById(R.id.displayDiff);
+        t = (TextView) findViewById(R.id.displayDiff);
         t.setText(difficulty);
     }
 
     protected void hardPress(View view) {
         difficulty = "Hard";
-        TextView t = (TextView) findViewById(R.id.displayDiff);
+        t = (TextView) findViewById(R.id.displayDiff);
         t.setText(difficulty);
     }
 
     protected void press30(View view) {
         timer = 30;
-        TextView t = (TextView) findViewById(R.id.textTime);
-        t.setText(Integer.toString(timer) + " Seconds");
+        t = (TextView) findViewById(R.id.textTime);
+        String temp = Integer.toString(timer) + " Seconds";
+        t.setText(temp);
     }
 
     protected void press45(View view) {
         timer = 45;
-        TextView t = (TextView) findViewById(R.id.textTime);
-        t.setText(Integer.toString(timer) + " Seconds");
+        t = (TextView) findViewById(R.id.textTime);
+        String temp = Integer.toString(timer) + " Seconds";
+        t.setText(temp);
     }
 
     protected void press60(View view) {
         timer = 60;
-        TextView t = (TextView) findViewById(R.id.textTime);
-        t.setText(Integer.toString(timer) + " Seconds");
+        t = (TextView) findViewById(R.id.textTime);
+        String temp = Integer.toString(timer) + " Seconds";
+        t.setText(temp);
     }
 
     protected void onSubmit(View view) {
         final CheckBox instructions = (CheckBox) findViewById(R.id.showInstructions);
         final CheckBox letters = (CheckBox) findViewById(R.id.showLetters);
+        Boolean lettersBool;
 
         if (!letters.isChecked() && instructions.isChecked()) {
             Log.d("GameSettings", "!!! Entered is not checked letters, isChecked instructions");
@@ -79,19 +84,17 @@ public class GameSettings extends AppCompatActivity {
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
             lettersBool = letters.isChecked();
-            assert (lettersBool == false);
             intent.putExtra(EXTRA_LETTERS, lettersBool);
-            //intent.putExtras(extras);
             startActivity(intent);
         }
         // if the user doesn't want letters and wants to skip instructions move to easy/hard
         else if (!letters.isChecked() && !instructions.isChecked()) {
             Log.d("GameSettings", "!!! Entered is not checked letters, is not checked instructions");
             Intent intent;
-            if (difficulty == "Hard") {
+            if (difficulty.equals("Hard")) {
                 intent = new Intent(getApplicationContext(), hardGame.class);
             }
-            else if (difficulty == "Easy") {
+            else if (difficulty.equals("Easy")) {
                 intent = new Intent(getApplicationContext(), easyGame.class);
             }
             else
@@ -104,7 +107,6 @@ public class GameSettings extends AppCompatActivity {
             }
             intent.putExtra(EXTRA_TIMER, timer);
             lettersBool = letters.isChecked();
-            assert (lettersBool == false);
             intent.putExtra(EXTRA_LETTERS, lettersBool);
             startActivity(intent);
         }
@@ -120,10 +122,10 @@ public class GameSettings extends AppCompatActivity {
         else if (letters.isChecked() && !instructions.isChecked()) {
             Log.d("GameSettings", "!!! Entered is checked letters, is not checked instructions");
             Intent intent;
-            if (difficulty == "Hard") {
+            if (difficulty.equals("Hard")) {
                 intent = new Intent(getApplicationContext(), hardGame.class);
             }
-            else if (difficulty == "Easy") {
+            else if (difficulty.equals("Easy")) {
                 intent = new Intent(getApplicationContext(), easyGame.class);
             }
             else
@@ -136,7 +138,6 @@ public class GameSettings extends AppCompatActivity {
             }
             intent.putExtra(EXTRA_TIMER, timer);
             lettersBool = letters.isChecked();
-            assert (lettersBool == true);
             intent.putExtra(EXTRA_LETTERS, lettersBool);
             startActivity(intent);
         }
@@ -149,7 +150,6 @@ public class GameSettings extends AppCompatActivity {
             //the user does not want letters on their keyboard
             //GIVE THE POOR PERSON SOME POINTS
             lettersBool = letters.isChecked();
-            assert (lettersBool == false);
             intent.putExtra(EXTRA_LETTERS, lettersBool);
             startActivity(intent);
         }

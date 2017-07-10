@@ -19,7 +19,8 @@
         <activity android:name=".GameSettings" />
         <activity android:name=".Instruction_Page" />
         <activity android:name=".easyGame" />
-        <activity android:name=".hardGame"></activity>
+        <activity android:name=".hardGame" />
+        <activity android:name=".EndGame"></activity>
     </application>
 
 </manifest>

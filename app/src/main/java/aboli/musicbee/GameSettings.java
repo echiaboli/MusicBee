@@ -29,15 +29,11 @@ public class GameSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_settings);
-        //default values for the abse game
+        //default values for the base game
         timer = 60;
         difficulty = "Easy";
     }
 
-    /**
-     * A method for when the user presses the "Easy" difficulty button
-     *
-     */
     protected void easyPress(View view) {
         difficulty = "Easy";
         t = (TextView) findViewById(R.id.displayDiff);

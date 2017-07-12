@@ -2,27 +2,32 @@ package aboli.musicbee;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.util.Random;
 
 import static aboli.musicbee.GameSettings.EXTRA_LETTERS;
 import static aboli.musicbee.GameSettings.EXTRA_TIMER;
 
 public class easyGame extends AppCompatActivity {
     private CountDownTimer mCountDownTimer;
-    private int i = 0;
-    private TextView t;
-    private TextView t1;
+    private int i = 10; //10 words, 10 indexes eventually will be modular for the file size
+    private TextView t;//timer text
+    private TextView t1;//word user enters
+    private TextView score;
     private Intent intent;
     private Integer timer;
+    private Integer scorePoints;
     private Boolean showKeys;
     private String input;
+    //private List<String> dictionary;
+    private String matchWord;
+    private String[] dictionary;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +36,111 @@ public class easyGame extends AppCompatActivity {
         timer = intent.getIntExtra(EXTRA_TIMER, 60);
         showKeys = intent.getBooleanExtra(EXTRA_LETTERS, true);
         t1 = (TextView) findViewById(R.id.word);
+//        score = (TextView)findViewById(R.id.score);
         input = " ";
+        //because of how input is handled, each word must start with a space
+        //note for future, fix that kthxbai
+        String [] tDictionary = {" ABC", " DAD", " ADA", " BBAC", " FACE", " GEDEA", " CFGABBA", " ACEFG",
+                " DEDA", " EFGBCAE"};
+        dictionary = tDictionary;
+        /*The hope is to eventually read a file of words in to a string list and pick from there
+        * so that adding new words to the list is much easier. The framework is there in the
+        * wordDictionary.txt file and readFile function. For the moment though, a hard-coded
+        * string will have to do the trick.
+        * one day... one daaaay.....
+        **/
+//        dictionary = readFile();
+
+        getRandomWord();
+
+        if (!showKeys) {
+            hideKeyTags();
+        }
+
         startTimer();
+
+
+
     }
+
+    /*
+     * changing the text of all the buttons, reusing textChange because allocation is really hard, ok?
+     */
+    private void hideKeyTags() {
+        Button textChange = (Button)findViewById(R.id.A);
+        textChange.setText(" ");
+        textChange = (Button)findViewById(R.id.B);
+        textChange.setText(" ");
+        textChange = (Button)findViewById(R.id.C);
+        textChange.setText(" ");
+        textChange = (Button)findViewById(R.id.D);
+        textChange.setText(" ");
+        textChange = (Button)findViewById(R.id.E);
+        textChange.setText(" ");
+        textChange = (Button)findViewById(R.id.F);
+        textChange.setText(" ");
+        textChange = (Button)findViewById(R.id.G);
+        textChange.setText(" ");
+    }
+/*
+    private List<String> readFile() {
+        BufferedReader reader = null;
+        List<String> lines = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(getAssets().open("wordDictionary.txt")));
+            lines = new ArrayList<String>();
+            String mLine;
+            while ((mLine = reader.readLine()) != null) {
+                lines.add(mLine);
+            }
+            Log.d("easyGame.java", " !!! File has been written! (yay)");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    Log.e("easyGame.java", "!!! Exception! Reader did not close");
+                }
+            }
+        }
+
+        Log.e ("easyGame.java", "!!! Dictionary file likely not found, Error!");
+        return lines;
+    }
+*/
+
+    protected void checkAnswer(View view) {
+        if (matchWord.equals(input)) {
+            Log.d("checkAnswer", "!!! inputs match! changing word, adding time!");
+            //scorePoints += 1
+            //score.setText(Integer.toString(scorePoints))
+            getRandomWord();
+            timer += 5;
+            clearInput();
+            //plan to get timer to work properly, stop and restart timer with new time value
+            //inefficient, but can look for a better solution later.
+            // ... do that here ...
+        } else {
+          Log.w("checkAnswer", "!!! inputs did not match! changing word, subtracting time!");
+            timer -= 5;
+            if (timer < 1) {
+                timer = 0;
+                t.setText(Integer.toString(timer));
+            }
+            getRandomWord();
+            clearInput();
+        }
+    }
+
+    private void getRandomWord() {
+        Random rand = new Random();
+        matchWord = dictionary[rand.nextInt(i)];
+        TextView t = (TextView)findViewById(R.id.spellWord);
+        t.setText(matchWord);
+    }
+
 
     private void startTimer() {
         t = (TextView) findViewById(R.id.timerText);
@@ -48,6 +155,11 @@ public class easyGame extends AppCompatActivity {
                 timer--;
                 String temp = "Time: " + Integer.toString(timer);
                 t.setText(temp);
+
+                if (timer < 1) {
+                    mCountDownTimer.cancel();
+                    mCountDownTimer.onFinish();
+                }
             }
             @Override
             public void onFinish() {
@@ -64,6 +176,10 @@ public class easyGame extends AppCompatActivity {
         startActivity(tempInt);
     }
 
+    private void clearInput() {
+        input = " ";
+        t1.setText(" ");
+    }
     public void onClickA(View view) {
         input += "A";
         t1.setText(input);

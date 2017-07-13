@@ -163,7 +163,7 @@ public class easyGame extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
-                Intent intent = new Intent(getApplicationContext(), EndGame.class);
+                intent = new Intent(getApplicationContext(), EndGame.class);
                 startActivity(intent);
             }
         };

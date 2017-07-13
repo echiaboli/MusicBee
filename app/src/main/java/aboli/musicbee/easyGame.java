@@ -36,7 +36,7 @@ public class easyGame extends AppCompatActivity {
         timer = intent.getIntExtra(EXTRA_TIMER, 60);
         showKeys = intent.getBooleanExtra(EXTRA_LETTERS, true);
         t1 = (TextView) findViewById(R.id.word);
-//        score = (TextView)findViewById(R.id.score);
+        score = (TextView)findViewById(R.id.scoreText);
         input = " ";
         //because of how input is handled, each word must start with a space
         //note for future, fix that kthxbai
@@ -114,16 +114,18 @@ public class easyGame extends AppCompatActivity {
     protected void checkAnswer(View view) {
         if (matchWord.equals(input)) {
             Log.d("checkAnswer", "!!! inputs match! changing word, adding time!");
-            //scorePoints += 1
-            //score.setText(Integer.toString(scorePoints))
+            scorePoints += 1;
+            score.setText("Score: " + Integer.toString(scorePoints));
             getRandomWord();
             timer += 5;
+            //resetTimer();
             clearInput();
             //plan to get timer to work properly, stop and restart timer with new time value
             //inefficient, but can look for a better solution later.
             // ... do that here ...
         } else {
           Log.w("checkAnswer", "!!! inputs did not match! changing word, subtracting time!");
+            //resetTimer();
             timer -= 5;
             if (timer < 1) {
                 timer = 0;

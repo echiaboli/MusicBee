@@ -35,8 +35,10 @@ public class Instruction_Page extends AppCompatActivity {
         intent.setClass(getApplicationContext(), easyGame.class);
         if (difficulty == "Easy") {
 
-            t.setText("Try and press the correct keys on the keyboard according to the words displayed above! After you enter the notes hit submit. If the answers is correct" +
-                    " you will gain 5 seconds. If you guess wrong it's minus 5 seconds! Try to get as many correct before the time runs out!");
+            t.setText("-Try and press the correct keys on the keyboard according to the words displayed " +
+                    "above!\n-After you enter the notes hit \"Got it!\".\n-If the answers is correct" +
+                    " you will gain 5 seconds.\n-If you guess wrong it's minus 5 seconds!\n-Try to get" +
+                    "as many correct before the time runs out!");
         } else if(difficulty == "Intermediate") {
 
         } else if(difficulty == "Hard") {

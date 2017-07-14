@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+import static aboli.musicbee.GameSettings.EXTRA_LETTERS;
 import static aboli.musicbee.easyGame.EXTRA_SCORE;
 
 public class EndGame extends AppCompatActivity {
@@ -18,9 +17,15 @@ public class EndGame extends AppCompatActivity {
         setContentView(R.layout.activity_end_game);
         Intent intent = getIntent();
         Integer score = intent.getIntExtra(EXTRA_SCORE, 0);
+        Boolean showKeys = intent.getBooleanExtra(EXTRA_LETTERS, true);
 
         TextView t = (TextView) findViewById(R.id.FinalScoreDisplay);
-        t.setText("Score: " + score);
+        if(!showKeys) {
+            t.setText("Score: " + score);
+        }
+        else {
+            t.setText(" ");
+        }
     }
 
     protected void restartGame(View view) {

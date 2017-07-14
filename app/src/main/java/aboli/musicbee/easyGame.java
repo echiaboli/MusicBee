@@ -194,6 +194,7 @@ public class easyGame extends AppCompatActivity {
             public void onFinish() {
                 intent = new Intent(getApplicationContext(), EndGame.class);
                 intent.putExtra(EXTRA_SCORE, scorePoints);
+                intent.putExtra(EXTRA_LETTERS, showKeys);
                 startActivity(intent);
             }
         };

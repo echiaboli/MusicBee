@@ -22,7 +22,7 @@ public class easyGame extends AppCompatActivity {
     private TextView score;
     private Intent intent;
     private Integer timer;
-    private Integer scorePoints;
+    private Integer scorePoints = 0;
     private Boolean showKeys;
     private String input;
     //private List<String> dictionary;
@@ -55,6 +55,7 @@ public class easyGame extends AppCompatActivity {
 
         if (!showKeys) {
             hideKeyTags();
+            score.setText("Score: 0");
         }
 
         startTimer();
@@ -112,24 +113,29 @@ public class easyGame extends AppCompatActivity {
 */
 
     protected void checkAnswer(View view) {
+
         if (matchWord.equals(input)) {
             Log.d("checkAnswer", "!!! inputs match! changing word, adding time!");
-            scorePoints += 1;
-            score.setText("Score: " + Integer.toString(scorePoints));
+            if (!showKeys) {
+                scorePoints = scorePoints + 1;
+                String setScoreThing = "Score: " + Integer.toString(scorePoints);
+                score.setText(setScoreThing);
+            }
             getRandomWord();
             timer += 5;
-            //resetTimer();
+            resetTimer();
             clearInput();
             //plan to get timer to work properly, stop and restart timer with new time value
             //inefficient, but can look for a better solution later.
-            // ... do that here ...
+            // ... do that here ... eventually
         } else {
           Log.w("checkAnswer", "!!! inputs did not match! changing word, subtracting time!");
-            //resetTimer();
+            //change the time and reset the timer
             timer -= 5;
+            resetTimer();
             if (timer < 1) {
                 timer = 0;
-                t.setText(Integer.toString(timer));
+                t.setText("Time: " + Integer.toString(timer));
             }
             getRandomWord();
             clearInput();
@@ -143,6 +149,10 @@ public class easyGame extends AppCompatActivity {
         t.setText(matchWord);
     }
 
+    private void resetTimer() {
+        mCountDownTimer.cancel();
+        startTimer();
+    }
 
     private void startTimer() {
         t = (TextView) findViewById(R.id.timerText);

@@ -1,5 +1,6 @@
 package aboli.musicbee;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,9 +42,15 @@ public class GameSettings extends AppCompatActivity {
     }
 
     protected void hardPress(View view) {
-        difficulty = "Hard";
+        Context context = getApplicationContext();
+        CharSequence text = "Button currently doesn't work, sorry.";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        /*difficulty = "Hard";
         t = (TextView) findViewById(R.id.displayDiff);
-        t.setText(difficulty);
+        t.setText(difficulty);*/
     }
 
     protected void press30(View view) {

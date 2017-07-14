@@ -14,11 +14,21 @@ import java.util.Random;
 import static aboli.musicbee.GameSettings.EXTRA_LETTERS;
 import static aboli.musicbee.GameSettings.EXTRA_TIMER;
 
+/**
+ * @author Code: Jesse Scott, XML keyboard: Sam Despain
+ *
+ * A class that handles the interactions for the keyboard,
+ * starts the timer for the game,
+ * keeps score of the player
+ */
 public class easyGame extends AppCompatActivity {
+
+    public static final String EXTRA_SCORE = "EXTRA_SCORE";
+
     private CountDownTimer mCountDownTimer;
     private int i = 10; //10 words, 10 indexes eventually will be modular for the file size
     private TextView t;//timer text
-    private TextView t1;//word user enters
+    private TextView t1;//word user enters -js
     private TextView score;
     private Intent intent;
     private Integer timer;
@@ -28,6 +38,7 @@ public class easyGame extends AppCompatActivity {
     //private List<String> dictionary;
     private String matchWord;
     private String[] dictionary;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +50,7 @@ public class easyGame extends AppCompatActivity {
         score = (TextView)findViewById(R.id.scoreText);
         input = " ";
         //because of how input is handled, each word must start with a space
-        //note for future, fix that kthxbai
+        //note for future, fix that kthxbai -js
         String [] tDictionary = {" ABC", " DAD", " ADA", " BBAC", " FACE", " GEDEA", " CFGABBA", " ACEFG",
                 " DEDA", " EFGBCAE"};
         dictionary = tDictionary;
@@ -47,7 +58,7 @@ public class easyGame extends AppCompatActivity {
         * so that adding new words to the list is much easier. The framework is there in the
         * wordDictionary.txt file and readFile function. For the moment though, a hard-coded
         * string will have to do the trick.
-        * one day... one daaaay.....
+        * one day... one daaaay..... -js
         **/
 //        dictionary = readFile();
 
@@ -65,7 +76,7 @@ public class easyGame extends AppCompatActivity {
     }
 
     /*
-     * changing the text of all the buttons, reusing textChange because allocation is really hard, ok?
+     * changing the text of all the buttons, reusing textChange because allocation is really hard, ok? -js
      */
     private void hideKeyTags() {
         Button textChange = (Button)findViewById(R.id.A);
@@ -112,6 +123,12 @@ public class easyGame extends AppCompatActivity {
     }
 */
 
+    /*
+     * Checks the answer of the user against the randomly chosen string in the line. -js
+     * Seriously, if I could get that file thing to work that'd be pretty frood.
+     * *so* much less code.
+     * Sorry, its one AM and I know very few people will venture here. hi.
+     */
     protected void checkAnswer(View view) {
 
         if (matchWord.equals(input)) {
@@ -127,7 +144,7 @@ public class easyGame extends AppCompatActivity {
             clearInput();
             //plan to get timer to work properly, stop and restart timer with new time value
             //inefficient, but can look for a better solution later.
-            // ... do that here ... eventually
+            // ... do that here ... eventually -js
         } else {
           Log.w("checkAnswer", "!!! inputs did not match! changing word, subtracting time!");
             //change the time and reset the timer
@@ -176,11 +193,13 @@ public class easyGame extends AppCompatActivity {
             @Override
             public void onFinish() {
                 intent = new Intent(getApplicationContext(), EndGame.class);
+                intent.putExtra(EXTRA_SCORE, scorePoints);
                 startActivity(intent);
             }
         };
         mCountDownTimer.start();
     }
+    //override the back button to make it so the game doesn't break! Yay!
     @Override
     public void onBackPressed() {
         mCountDownTimer.cancel();
@@ -188,6 +207,10 @@ public class easyGame extends AppCompatActivity {
         startActivity(tempInt);
     }
 
+    /*
+     * clicky buttons!
+     * code block that controls what *most* of the buttons do -js
+     */
     private void clearInput() {
         input = " ";
         t1.setText(" ");

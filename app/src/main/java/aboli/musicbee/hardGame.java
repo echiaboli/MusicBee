@@ -11,6 +11,9 @@ import android.widget.TextView;
  * current concept: timers.
  * Coming soon: Timers AND progress bars.
  * SRC: https://stackoverflow.com/questions/10241633/android-progressbar-countdown
+ *
+ * Eventually this will be an actual feature, but considering time constraints probably not
+ * for a little while.
  */
 public class hardGame extends AppCompatActivity {
     CountDownTimer mCountDownTimer;

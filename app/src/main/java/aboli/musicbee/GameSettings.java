@@ -1,5 +1,6 @@
 package aboli.musicbee;
 
+import android.media.MediaPlayer;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import android.widget.Toast;
  */
 public class GameSettings extends AppCompatActivity {
 
-
+    MediaPlayer select;
     private Integer timer;
     private String difficulty;
     public static final String EXTRA_TIMER = "EXTRA_TIMER_SAVE";
@@ -33,6 +34,8 @@ public class GameSettings extends AppCompatActivity {
         //default values for the base game
         timer = 60;
         difficulty = "Easy";
+        select = MediaPlayer.create(this, R.raw.rondo);
+        select.start();
     }
 
     protected void easyPress(View view) {
@@ -75,6 +78,7 @@ public class GameSettings extends AppCompatActivity {
     }
 
     protected void onSubmit(View view) {
+        select.stop();
         final CheckBox instructions = (CheckBox) findViewById(R.id.showInstructions);
         final CheckBox letters = (CheckBox) findViewById(R.id.showLetters);
         Boolean lettersBool;

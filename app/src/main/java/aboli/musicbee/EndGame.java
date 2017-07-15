@@ -1,5 +1,6 @@
 package aboli.musicbee;
 
+import android.media.MediaPlayer;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,12 @@ import static aboli.musicbee.easyGame.EXTRA_SCORE;
 
 public class EndGame extends AppCompatActivity {
 
+    MediaPlayer gameover;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        gameover = MediaPlayer.create(this, R.raw.andante);
+        gameover.start();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
         Intent intent = getIntent();
@@ -29,6 +34,7 @@ public class EndGame extends AppCompatActivity {
     }
 
     protected void restartGame(View view) {
+        gameover.stop();
         Intent intent = new Intent(getApplicationContext(), GameSettings.class);
         startActivity(intent);
     }
@@ -41,5 +47,6 @@ public class EndGame extends AppCompatActivity {
     public void onBackPressed() {
         Intent tempInt = new Intent(getApplicationContext(), GameSettings.class);
         startActivity(tempInt);
+        gameover.stop();
     }
 }

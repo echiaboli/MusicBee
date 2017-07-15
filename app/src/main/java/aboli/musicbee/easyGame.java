@@ -62,7 +62,7 @@ public class easyGame extends AppCompatActivity {
         score = (TextView)findViewById(R.id.scoreText);
         input = " ";
 
-        /*
+
         noteA = MediaPlayer.create(this, R.raw.a);
         noteB = MediaPlayer.create(this, R.raw.b);
         noteC = MediaPlayer.create(this, R.raw.c);
@@ -72,7 +72,7 @@ public class easyGame extends AppCompatActivity {
         noteG = MediaPlayer.create(this, R.raw.g);
         right = MediaPlayer.create(this, R.raw.correct);
         wrong = MediaPlayer.create(this, R.raw.incorrect);
-        */
+
         //because of how input is handled, each word must start with a space
         //note for future, fix that kthxbai -js
         String [] tDictionary = {" ABC", " DAD", " ADA", " BBAC", " FACE", " GEDEA", " CFGABBA", " ACEFG",

@@ -29,16 +29,16 @@
             />
         <activity
             android:name=".easyGame"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name=".hardGame"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name=".EndGame"
             android:screenOrientation="portrait"
-            ></activity>
+            />
     </application>
 
 </manifest>

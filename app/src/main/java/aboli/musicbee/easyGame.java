@@ -1,5 +1,6 @@
 package aboli.musicbee;
 
+import android.media.MediaPlayer;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +16,24 @@ import static aboli.musicbee.GameSettings.EXTRA_LETTERS;
 import static aboli.musicbee.GameSettings.EXTRA_TIMER;
 
 /**
- * @author Code: Jesse Scott, XML keyboard: Sam Despain
+ * @author Code: Jesse Scott, XML keyboard: Samuel Despain
  *
  * A class that handles the interactions for the keyboard,
  * starts the timer for the game,
  * keeps score of the player
  */
 public class easyGame extends AppCompatActivity {
+
+    //These are the sounds
+    MediaPlayer noteA;
+    MediaPlayer noteB;
+    MediaPlayer noteC;
+    MediaPlayer noteD;
+    MediaPlayer noteE;
+    MediaPlayer noteF;
+    MediaPlayer noteG;
+    MediaPlayer right;
+    MediaPlayer wrong;
 
     public static final String EXTRA_SCORE = "EXTRA_SCORE";
 
@@ -49,6 +61,17 @@ public class easyGame extends AppCompatActivity {
         t1 = (TextView) findViewById(R.id.word);
         score = (TextView)findViewById(R.id.scoreText);
         input = " ";
+
+        noteA = MediaPlayer.create(this, R.raw.a);
+        noteB = MediaPlayer.create(this, R.raw.b);
+        noteC = MediaPlayer.create(this, R.raw.c);
+        noteD = MediaPlayer.create(this, R.raw.d);
+        noteE = MediaPlayer.create(this, R.raw.e);
+        noteF = MediaPlayer.create(this, R.raw.f);
+        noteG = MediaPlayer.create(this, R.raw.g);
+        right = MediaPlayer.create(this, R.raw.correct);
+        wrong = MediaPlayer.create(this, R.raw.incorrect);
+
         //because of how input is handled, each word must start with a space
         //note for future, fix that kthxbai -js
         String [] tDictionary = {" ABC", " DAD", " ADA", " BBAC", " FACE", " GEDEA", " CFGABBA", " ACEFG",
@@ -142,6 +165,7 @@ public class easyGame extends AppCompatActivity {
             timer += 5;
             resetTimer();
             clearInput();
+            right.start();
             //plan to get timer to work properly, stop and restart timer with new time value
             //inefficient, but can look for a better solution later.
             // ... do that here ... eventually -js
@@ -156,6 +180,7 @@ public class easyGame extends AppCompatActivity {
             }
             getRandomWord();
             clearInput();
+            wrong.start();
         }
     }
 
@@ -219,30 +244,37 @@ public class easyGame extends AppCompatActivity {
     public void onClickA(View view) {
         input += "A";
         t1.setText(input);
+        noteA.start();
     }
     public void onClickB(View view) {
         input += "B";
         t1.setText(input);
+        noteB.start();
     }
     public void clickC(View view) {
         input += "C";
         t1.setText(input);
+        noteC.start();
     }
     public void onClickD(View view) {
         input += "D";
         t1.setText(input);
+        noteD.start();
     }
     public void onClickE(View view) {
         input += "E";
         t1.setText(input);
+        noteE.start();
     }
     public void onClickF(View view) {
         input += "F";
         t1.setText(input);
+        noteF.start();
     }
     public void onClickG(View view) {
         input += "G";
         t1.setText(input);
+        noteG.start();
     }
     public void clickClear(View view) {
         input = " ";

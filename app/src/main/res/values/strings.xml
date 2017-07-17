@@ -11,4 +11,6 @@
     <string name="time">Time: </string>
     <string name="showNotes">Show Note Letters (No Score)</string>
     <string name="showInstructions">Show Instruction Page</string>
+    <string name="gameOver">GAME OVER</string>
+    <string name="tryAgain">Try Again!</string>
 </resources>

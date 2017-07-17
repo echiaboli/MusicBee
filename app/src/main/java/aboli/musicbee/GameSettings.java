@@ -161,4 +161,9 @@ public class GameSettings extends AppCompatActivity {
             startActivity(intent);
         }
     }
+    @Override
+    public void onBackPressed() {
+        Intent tempInt = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(tempInt);
+    }
 }
